@@ -109,28 +109,35 @@ margin: 5px;
     }
 
     .splitTask {
-        display: flex;
+        text-align: left;
         width: 54%;
         input {width: 90%; height: 25px;}
+        &:hover button {opacity: 1;}
     }
 
     .splitStart {
         width: 18%;
         input {width: 90%; height: 25px;}
+        &:hover button {opacity: 1;}
     }
 
     .splitMin {
         width: 18%;
         input {width: 90%; height: 25px;}
+        &:hover button {opacity: 1;}
     }
 
     .splitBtn {
         width: 35px;
-        button {
-            width: 100%;
-            height: 35px;
-            background: 0;
-            border: 0;
+        button {opacity: 1;}
+    }
+
+    button {
+        opacity: 0;
+        width: 35px;
+        height: 35px;
+        background: 0;
+        border: 0;
             .trashIcon {
                 width: 100%;
                 height: 25px;
@@ -144,7 +151,12 @@ margin: 5px;
                 border-radius: 2px;
             }
         }
+
+    input {
+        color: black;
+        
     }
+
 }`
 
 

@@ -34,7 +34,6 @@ function App() {
       minutes: e.target.type === 'number' ? e.target.value : taskInput.minutes,
       id: new Date().getTime()
     })
-    console.log(taskInput)
   }
   
   const handleAddTask = () => {
@@ -79,7 +78,6 @@ function App() {
         </div>
 
           {newTask.map((e:any , index: number) => {
-            console.log(e)
             const result = <Splitter key={e.id} prop={e} className={index/2 === 0 ? 'toggleBg' : ''} />;
             return result;
           })}
