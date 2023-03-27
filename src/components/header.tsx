@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { GoTasklist } from 'react-icons/go'
 
 const Header = ({setTheme}: any) => {
@@ -42,6 +43,13 @@ const Header = ({setTheme}: any) => {
                 '--input-alert-bg': 'rgb(255, 230, 230)',})
         }
     }
+    
+      useEffect(() => {
+        const storage = JSON.parse(localStorage.getItem('theme')!);
+        if (storage) {
+          setTheme(storage);
+        }
+      }, [])
 
     return (
         <>

@@ -53,11 +53,17 @@ export default function Home() {
   }
 
   useEffect(() => {
-    localStorage.setItem('newTask', JSON.stringify(newTask))
+    localStorage.setItem('theme', JSON.stringify(theme))
+  }, [theme]);
+
+  useEffect(() => {
+    if (newTask.length !== 0) {
+      localStorage.setItem('newTask', JSON.stringify(newTask))
+    }
   }, [newTask]);
 
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('newTask'));
+    const storage = JSON.parse(localStorage.getItem('newTask')!);
     if (storage) {
       setNewTask(storage);
     }
