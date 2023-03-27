@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import {SplitterContent} from './styles/styled'
+import { FaTrash, FaPen } from 'react-icons/fa'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-
-const Splitter = ({ prop }: any) => {
+const Splitter = ({ prop, newTask, setNewTask }: any) => {
 
     const [taskObj, setTaskObj] = useState<any>({...prop})
     const [transitionClass, setTransitionClass] = useState<string>('splitterWrap adding')
     const [input, setInput] = useState<any>({
         task: 0,
-        start: 0,
         min: 0,
     })
     const [edit, setEdit] = useState<any>()
@@ -23,25 +19,21 @@ const Splitter = ({ prop }: any) => {
                 case 'taskBtn': 
                     taskObjSelector.task = edit;
                     break;
-                case 'startBtn':
-                    taskObjSelector.start = edit;
-                    break;
                 case 'minBtn':
                     taskObjSelector.minutes = edit;
                     break;
             }
             setTaskObj({...taskObjSelector});
-            setInput({task: 0, start: 0, min: 0,});
+            setInput({task: 0, min: 0,});
         } else {
             switch (e.currentTarget.id) {
                 case 'taskBtn': 
-                    setInput({task: 1, start: 0, min: 0,})
-                    break;
-                case 'startBtn':
-                    setInput({task: 0, start: 1, min: 0,})
+                    setInput({task: 1, min: 0,})
+                    setEdit(taskObj.task)
                     break;
                 case 'minBtn':
-                    setInput({task: 0, start: 0, min: 1,})
+                    setInput({task: 0, min: 1,})
+                    setEdit(taskObj.minutes)
                     break;
         }
         }
@@ -52,6 +44,12 @@ const Splitter = ({ prop }: any) => {
         setInterval(() => {
             setTaskObj({task: '', });
         }, 150);
+        console.log(taskObj.id)
+        let removeVar = [...newTask]
+        removeVar.map((e: any) => { 
+            e.id === taskObj.id ? e.task = '' : console.log('maping')
+        })
+        setNewTask([...removeVar]);
     }
 
     if (taskObj.task.length === 0) {
@@ -61,37 +59,22 @@ const Splitter = ({ prop }: any) => {
         )
     } else {
         return (
-        <SplitterContent>
+        <>
             <div className={transitionClass}>
                 <div className='splitTask'>
                     {input.task === 0 ?
                     <>
                         {taskObj.task}
-                            <button id='taskBtn' 
-                            onClick={handleDisplayInput}>
-                                <FontAwesomeIcon className='editIcon' icon={faPenToSquare} />
-                            </button>
+                        <button id='taskBtn' 
+                        onClick={handleDisplayInput}>
+                            <FaPen className='editIcon' />
+                        </button>
                     </> : 
                     <input 
                     autoFocus 
                     type='text'
                     id='taskBtn'
-                    onKeyDown={handleDisplayInput}
-                    onChange={e => setEdit(e.target.value)}></input>}
-                </div>
-
-                <div className='splitStart'>
-                    {input.start === 0 ? 
-                    <>
-                        {taskObj.start}
-                        <button id='startBtn' onClick={handleDisplayInput}>
-                            <FontAwesomeIcon className='editIcon' icon={faPenToSquare} />
-                        </button>
-                    </> : 
-                    <input 
-                    autoFocus 
-                    type='time'
-                    id='startBtn'
+                    defaultValue={taskObj.task}
                     onKeyDown={handleDisplayInput}
                     onChange={e => setEdit(e.target.value)}></input>}
                 </div>
@@ -101,24 +84,25 @@ const Splitter = ({ prop }: any) => {
                     <>
                         {taskObj.minutes}
                         <button id='minBtn' onClick={handleDisplayInput}>
-                            <FontAwesomeIcon className='editIcon' icon={faPenToSquare} />
+                            <FaPen className='editIcon' />
                         </button> 
                     </> : 
                     <input 
                     autoFocus 
-                    type='number'
+                    type='time'
                     id='minBtn'
+                    defaultValue={taskObj.minutes}
                     onKeyDown={handleDisplayInput}
                     onChange={e => setEdit(e.target.value)}></input>}
                 </div>
 
                 <div className='splitBtn'>
                     <button onClick={handleRemoveTask}>
-                        <FontAwesomeIcon className='trashIcon' icon={faTrash} />
+                        <FaTrash className='trashIcon' />
                     </button>
                 </div>
             </div>
-        </SplitterContent>
+        </>
         );
     };
 }
