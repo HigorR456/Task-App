@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 
 import Splitter from '../components/splitter'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
 import {BiPlus} from 'react-icons/bi'
+import {GoTasklist} from 'react-icons/go'
 
 export default function Home() {
   const [theme, setTheme] = useState({
@@ -70,9 +72,15 @@ export default function Home() {
   }, [])
 
   return (
-    <div id='indexWrap' style={theme}>
-      <Header setTheme={setTheme} />
+    <>
+      <Head>
+        <title>Task-App</title>
+        <link rel="icon" href="/task.svg" />
+      </Head>
 
+    <div id='indexWrap' style={theme}>
+      
+      <Header setTheme={setTheme} />
 
       <div className='appWrap'>
         <div className='taskIncrementWrap'>
@@ -104,5 +112,6 @@ export default function Home() {
 
       <Footer />
     </div>
+    </>
   )
 }
