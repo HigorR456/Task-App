@@ -1,3 +1,35 @@
+<div align='center'><img src='https://github.com/HigorR456/Task-App/assets/109878939/4ab13bdb-6e81-4faf-b387-25bb831f6e32'/></div>
+
+<h2>About the project</h2>
+
+This project is a “To do list” built with React to render all added, edited or deleted task. It features a minimalistic design with toggle between Themes option.
+
+👉Live demo: https://task-app456.netlify.app/
+
+<h3>Build with:</h3>
+
+» React JS <br>
+» Next.js <br>
+» SASS
+
+<h2>📸Screenshot of the Project</h2>
+<br>
+
+<div align='center'>
+<img src='https://github.com/HigorR456/Task-App/assets/109878939/8350cf29-3b81-4085-8547-7e49611604a5'/>
+</div>
+
+<div align='center'>
+<img src='https://github.com/HigorR456/Task-App/assets/109878939/b9a98305-faaa-4930-9427-419f3a4f4868'/>
+</div>
+
+<div align='center'>
+<img src='https://github.com/HigorR456/Task-App/assets/109878939/9b7a5b62-8b6c-49a4-8170-80877fd00cf8'/>
+</div>
+
+
+___________________________________________________________________
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
